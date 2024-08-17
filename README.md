@@ -4,8 +4,7 @@ Yazi plugin for neovim
 ### Screenshot
 ![Screenshot](./img/yazi.png)
 
-### Dependencies
-[yazi](https://github.com/sxyazi/yazi)
+### Dependencies: [yazi](https://github.com/sxyazi/yazi)
 
 ### Install
 **lazy.nvim**
@@ -13,6 +12,8 @@ Yazi plugin for neovim
 ```lua
 {
   "Kicamon/yazi.nvim",
+  lazy = true,
+  cmd = "Yazi",
   config = function()
     require('yazi').setup()
   end
@@ -22,7 +23,7 @@ Yazi plugin for neovim
 **vim-plug**
 
 ```vim
-Plug "Kicamon/yazi.nvim"
+Plug "Kicamon/yazi.nvim", {['on'] = 'Yazi' }}
 lua require('yazi').setup()
 ```
 
