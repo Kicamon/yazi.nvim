@@ -43,6 +43,8 @@ local function yazi(open, opt)
 
   infos.bufnr, infos.winid = win:new_float(float_opt, true, true):wininfo()
 
+  vim.cmd('startinsert')
+
   vim.fn.termopen(string.format('yazi %s --chooser-file="%s"', infos.filename, infos.tempname), {
     on_exit = function()
       if api.nvim_win_is_valid(infos.winid) then
