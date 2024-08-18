@@ -1,5 +1,5 @@
 # yazi.nvim
-Yazi plugin for neovim
+Yazi lightweight plugin for neovim
 
 ### Screenshot
 ![Screenshot](./img/yazi.png)
@@ -31,7 +31,7 @@ lua require('yazi').setup()
 | open         | description                       |
 |--------------|-----------------------------------|
 | `Yazi`       | Open files in buffers             |
-| `Yazi edit`  | Open files in tabs                |
+| `Yazi tabe`  | Open files in tabs                |
 | `Yazi left`  | Open the file in the left window  |
 | `Yazi down`  | Open the file in the lower window |
 | `Yazi up`    | Open the file in the top window   |
