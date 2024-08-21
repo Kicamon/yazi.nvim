@@ -81,7 +81,7 @@ local function setup(opts)
     if #args.args == 0 then
       yazi('edit')
     elseif args.args == 'left' then
-      yazi('vsplit', 'lefs')
+      yazi('vsplit', 'left')
     elseif args.args == 'down' then
       yazi('split', 'down')
     elseif args.args == 'up' then
