@@ -69,6 +69,29 @@ local function defualt()
   }
 end
 
+local commands = {
+  left = function()
+    yazi('vsplit', 'left')
+  end,
+  down = function()
+    yazi('split', 'down')
+  end,
+  up = function()
+    yazi('split', 'up')
+  end,
+  right = function()
+    yazi('vsplit', 'right')
+  end,
+}
+
+local function load_command(cmd)
+  commands[cmd]()
+end
+
+local function commands_list()
+  return vim.tbl_keys(commands)
+end
+
 local function setup(opts)
   config = vim.tbl_extend('force', defualt(), opts or {})
 
@@ -81,23 +104,17 @@ local function setup(opts)
   api.nvim_create_user_command('Yazi', function(args)
     if #args.args == 0 then
       yazi('edit')
-    elseif args.args == 'left' then
-      yazi('vsplit', 'left')
-    elseif args.args == 'down' then
-      yazi('split', 'down')
-    elseif args.args == 'up' then
-      yazi('split', 'up')
-    elseif args.args == 'right' then
-      yazi('vsplit', 'right')
-    elseif args.args == 'tabe' then
-      yazi('tabe')
     else
-      error('Wrong parameters')
+      load_command(args.args)
     end
   end, {
+    range = true,
     nargs = '?',
-    complete = function()
-      return { 'edit', 'tabe', 'left', 'down', 'up', 'right' }
+    complete = function(arg)
+      local list = commands_list()
+      return vim.tbl_filter(function(s)
+        return string.match(s, '^' .. arg)
+      end, list)
     end,
   })
 end
