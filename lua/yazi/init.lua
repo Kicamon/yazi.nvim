@@ -83,6 +83,9 @@ local commands = {
   right = function()
     yazi('vsplit', 'right')
   end,
+  tabe = function()
+    yazi('tabe')
+  end,
 }
 
 local function load_command(cmd)
